@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Práctica clase 1</title>
+</head>
+<body>
+    <script
+    crossorigin
+    src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+    crossorigin
+    src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <div id="root"></div>
+    <script type="text/babel">
+    let datosPerfil = [
+        {nombre: 'Jhonny Deep',
+        pelicula:"Piratas del caribe",
+        anios:70,
+        cantPeliculas:32},
+        ];
+    let buttons =['Home', 'About me', 'Contact'];
+    let imgPerfil = 'https://th.bing.com/th/id/OIF.vqHnx8MasshpTFwGDOZi1g?pid=ImgDet&rs=1';
+
+    const Header = (props) => {
+        let botonera = props.titulos.map((item, index)=>{
+            return <button key={index}> {item} </button>
+        })
+        return <section>{botonera}</section>
+    }
+
+    const ImgPerfil = (props) => {
+        return <section><img src={props.src}/></section>
+    }
+
+    const Datos = ({nombre, pelicula, anios, cantPeliculas}) => {
+        return (<section> 
+            <h3>{nombre}</h3>
+            <p>Actuo en la pelicula: {pelicula}</p>
+            <p>Tiene {anios} anios</p>
+            <p>Hizo {cantPeliculas} peliculas en su carrera</p>
+            </section>)
+    }
+
+    ReactDOM.render(
+        <div>
+            <Header titulos={buttons}/>
+            <ImgPerfil src={imgPerfil}/>
+            <Datos {...datosPerfil[0]}/>
+        </div>
+    , document.getElementById("root"));
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Práctica clase 1</title>
+</head>
+<body>
+    <script
+    crossorigin
+    src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+    crossorigin
+    src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <div id="root"></div>
+    <script type="text/babel">
+        let peliculas = [
+            {id:1,
+            nombre:"Titanic",
+            precio:10,
+            cantidad:2},
+            {id:2,
+            nombre:"Lord of the rings",
+            precio:1,
+            cantidad:1},
+            {id:3,
+            nombre:"Shrek",
+            precio:13,
+            cantidad:9},
+            {id:4,
+            nombre:"Fiona",
+            precio:15,
+            cantidad:5},
+        ]
+
+    let buttons = ['HOME', 'ABOUT ME', 'CONTACT'];
+
+    const Header = () => {
+        //importa el orden de como se disponen los parametros en el map
+        let rutas = buttons.map((item, index) => {
+            return <button className='ruta' key={index}> {item} </button>
+        })
+        return <section className='rutas'> {rutas} </section>
+    }
+
+    const ListaPeliculas = () => {
+        const lista = peliculas.map(item =>{
+            return( <section key={item.id}>
+                <h3>{item.id}</h3>
+                <p>{item.nombre}</p>
+                <p>{item.precio}</p>
+                </section>)
+        })
+        return <section>{lista}</section>
+    }
+
+    ReactDOM.render(
+        <div>
+            <Header/>
+            <ListaPeliculas/>
+        </div>
+    , document.getElementById("root"));
+    </script>
+</body>
+</html>
